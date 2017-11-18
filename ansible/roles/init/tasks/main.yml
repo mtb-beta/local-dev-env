@@ -1,0 +1,37 @@
+---
+- name: setting localtime to JST
+  file:
+    src: /usr/share/zoneinfo/Asia/Tokyo
+    dest: /etc/localtime
+    state: link
+    force: True
+
+- name: enable develop user
+  user:
+    name: develop
+    shell: /bin/bash
+    home: /var/develop
+    createhome: yes
+
+- name: Install apt dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - build-essential
+    - python3.5-dev
+    - python3-pip
+    - python3-venv
+    - python-pip
+
+- name: Install Python tools
+  pip:
+    name: "{{ item }}"
+    state: latest
+  became: true
+  with_items:
+    - pbr
+    - tox
+    - virtualenv
+    - virtualenvwrapper
+    - wheel

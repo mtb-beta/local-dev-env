@@ -99,3 +99,12 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# vagrant
+.vagrant
+
+# venv
+local-dev-env/
+
+# ansible
+*.retry
