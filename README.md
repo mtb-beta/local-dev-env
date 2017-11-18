@@ -14,7 +14,7 @@
 ```
 
 Ansible反映
-
+```
 (local-dev-env)$ vagrant provision
 ```
 
